@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  fake-sms:
+    build: .
+    ports:
+      - "25400:25400"
