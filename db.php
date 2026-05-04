@@ -42,6 +42,12 @@ function insertMessage($messageId, $recipient, $body) {
     $db->close();
 }
 
+function deleteAllMessages() {
+    $db = getDb();
+    $db->exec('DELETE FROM messages');
+    $db->close();
+}
+
 function getAllMessages() {
     $db = getDb();
     $results = $db->query('SELECT * FROM messages ORDER BY datetime DESC');

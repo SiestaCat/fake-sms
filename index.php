@@ -1,5 +1,12 @@
 <?php
 require_once 'db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'clear') {
+    deleteAllMessages();
+    header('Location: /');
+    exit;
+}
+
 $messages = getAllMessages();
 ?>
 <!DOCTYPE html>
@@ -12,7 +19,15 @@ $messages = getAllMessages();
 </head>
 <body>
     <div class="container py-4">
-        <h1 class="mb-4">Fake SMS Dashboard</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-0">Fake SMS Dashboard</h1>
+            <?php if (!empty($messages)): ?>
+                <form method="POST" onsubmit="return confirm('Delete all messages?')">
+                    <input type="hidden" name="action" value="clear">
+                    <button type="submit" class="btn btn-danger btn-sm">Clear all</button>
+                </form>
+            <?php endif; ?>
+        </div>
 
         <div class="table-responsive">
             <table class="table table-striped table-hover">
