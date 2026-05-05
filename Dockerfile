@@ -15,4 +15,4 @@ RUN mkdir -p /app/data && chmod 777 /app/data
 
 EXPOSE 25400
 
-CMD ["php", "-S", "0.0.0.0:25400", "-t", "/app"]
+CMD ["php", "-d", "memory_limit=512M", "-S", "0.0.0.0:25400", "-t", "/app"]

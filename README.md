@@ -171,6 +171,12 @@ Response:
 
 **Note:** All recipients will share the same `message_id` in the database.
 
+### Clear all messages:
+
+```bash
+curl -X POST http://localhost:25400/ -d "action=clear"
+```
+
 ### View the dashboard:
 
 Open your browser at `http://localhost:25400`
